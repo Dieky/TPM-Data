@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "147957543934",
+    "project_id": "tpm-fryser",
+    "storage_bucket": "tpm-fryser.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147957543934:android:424c598e6426bc926bc6af",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "147957543934-rchu0omo8iqgj2verhgn5d7pmhmffucn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLdbrkSyxvNFHXoMlxTbVq4QWQgaHMpy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "147957543934-rchu0omo8iqgj2verhgn5d7pmhmffucn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
