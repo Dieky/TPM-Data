@@ -13,9 +13,13 @@ import {
     Touchable,
 } from 'react-native';
 import auth, { firebase } from '@react-native-firebase/auth';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { fetchData, addItem } from '../dbfunctions/constants'
 import DropdownSelector from '../components/DropdownSelector'
+
+import styles from "../styles/GlobalStyling";
 
 const HomeScreen = () => {
 
@@ -216,40 +220,40 @@ const HomeScreen = () => {
     )
 }
 
-const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: 'lightblue',
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-    },
-    horizontalContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        paddingHorizontal: 25,
-        paddingBottom: 10,
-        paddingTop: 10,
-    },
-    inputfield: {
-        borderColor: 'black',
-        borderBottomWidth: 1,
-        fontWeight: 'bold'
-    },
-    picker: {
-        // flex: 1,
-        height: 50,
-        width: 200,
-        alignSelf: 'center',
-    },
-    textStyling: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
+// const styles = StyleSheet.create({
+//     scrollView: {
+//         backgroundColor: 'lightblue',
+//         flex: 1,
+//     },
+//     container: {
+//         flex: 1,
+//     },
+//     horizontalContainer: {
+//         flex: 1,
+//         flexDirection: 'row',
+//         justifyContent: 'space-between',
+//         alignItems: 'flex-end',
+//         paddingHorizontal: 25,
+//         paddingBottom: 10,
+//         paddingTop: 10,
+//     },
+//     inputfield: {
+//         borderColor: 'black',
+//         borderBottomWidth: 1,
+//         fontWeight: 'bold'
+//     },
+//     picker: {
+//         // flex: 1,
+//         height: 50,
+//         width: 200,
+//         alignSelf: 'center',
+//     },
+//     textStyling: {
+//         fontSize: 20,
+//         fontWeight: 'bold',
+//     },
 
 
-});
+// });
 
 export default HomeScreen;

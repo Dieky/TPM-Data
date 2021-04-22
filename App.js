@@ -1,35 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  TextInput,
-  TouchableNativeFeedback,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import DropdownSelector from './src/components/DropdownSelector';
-import HomeScreen from './src/appscreens/HomeScreen';
-
+import 'react-native-gesture-handler';
+import React from 'react';
+import { AppNavigator } from "./src/routes/AppNavigator";
 
 const App = () => {
 
   return (
-    <>
-      <HomeScreen />
-    </>
+    <AppNavigator />
   )
 }
-
 
 export default App;
