@@ -4,46 +4,63 @@ import {
   Text,
   Button,
   TextInput,
+  Keyboard,
 } from 'react-native';
-import { useState } from "react/cjs/react.development";
-import { addInventoryList, createConstants } from '../dbfunctions/stamdata';
+import { useEffect, useState } from "react/cjs/react.development";
+import { addInventoryList, fetchInventoryLists } from '../dbfunctions/stamdata';
 import styles from "../styles/GlobalStyling";
+import Inventory from "../components/Inventory";
 
 
 
 const HomeScreen2 = ({ route, navigation }) => {
 
   const [inventoryName, setInventoryName] = useState();
+  const [inventoryCreated, setInventoryCreated] = useState(false);
+  const [inventoryList, setInventoryList] = useState([]);
 
-  const testObj = {
-    msg: "hejsa",
-    msg2: "hejsa2"
-  }
+
+  useEffect(() => {
+    async function fetchData() {
+      let res = await fetchInventoryLists(user)
+      setInventoryList(res);
+      setInventoryCreated(false);
+    }
+    fetchData();
+  }, [inventoryCreated]);
 
   const inventoryNameHandler = (txt) => {
     setInventoryName(txt);
   }
 
-  const testDb = () => {
-    addInventoryList(user, inventoryName);
+  const testDb = async () => {
+    Keyboard.dismiss();
+    await addInventoryList(user, inventoryName);
+    setInventoryCreated(true);
+    setInventoryName("");
   }
+
+  const printInventory = () => {
+    console.log(inventoryList);
+  }
+
 
   const { user } = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Hello {user.email}</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details', { testObj })}
-      />
       <Text>Enter name for inventory here</Text>
       <TextInput
         style={styles.loginInputfield}
+        placeholder={"Give a name to your inventory"}
         onChangeText={inventoryNameHandler}
         value={inventoryName}
       />
-      <Button title="testDB" onPress={testDb} />
-      <Button title="testDBConstants" onPress={createConstants} />
+
+      {inventoryList.map((data, index) => {
+        return <Inventory inventory={data} key={index} navigation={navigation}  />
+      })}
+      <Button title="Create new inventory" onPress={testDb} />
     </View>
   );
 }

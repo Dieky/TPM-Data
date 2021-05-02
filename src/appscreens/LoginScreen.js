@@ -14,9 +14,8 @@ function LoginScreen({ route, navigation }) {
         auth()
             .signInWithEmailAndPassword(mail, password)
             .then((user) => {
-                console.log(user);
-                setUser(user)
-                navigation.navigate("Home", user)
+                setUser(user);
+                navigation.navigate("Home", user);
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -35,9 +34,8 @@ function LoginScreen({ route, navigation }) {
         auth()
             .createUserWithEmailAndPassword(mail, password)
             .then((user) => {
-                console.log(user);
-                setUser(user)
-                navigation.navigate("Home", user)
+                setUser(user);
+                navigation.navigate("Home", user);
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {
@@ -81,8 +79,6 @@ function LoginScreen({ route, navigation }) {
             />
             <Button title="Login" onPress={LoginUser} />
             <Button title="Create" onPress={CreateUser} />
-            <Text>{mail}</Text>
-            <Text>{password}</Text>
         </>
     );
 }

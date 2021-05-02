@@ -35,7 +35,7 @@ export async function fetchData() {
     let tmp = [];
     return new Promise((resolve, reject) => {
         firestore()
-            .collection('constants')
+            .collection('masterData')
             .get()
             .then((response) => {
                 response.forEach(doc => {
