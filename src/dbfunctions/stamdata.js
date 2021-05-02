@@ -26,7 +26,7 @@ async function createMasterData() {
 
 }
 
-export async function fetchMasterData(masterDataId){
+export async function fetchMasterData(masterDataId) {
     let masterdata = await firestore().collection("masterdata").doc(masterDataId).get();
     return masterdata.data();
 }
@@ -34,13 +34,24 @@ export async function fetchMasterData(masterDataId){
 
 export async function fetchInventoryLists(user) {
     let tmp = []
-    await firestore().collection("inventoryList").where("usersAllowed", "array-contains", user.email ).get().then(snapshot => snapshot.forEach(doc => {
+    await firestore().collection("inventoryList").where("usersAllowed", "array-contains", user.email).get().then(snapshot => snapshot.forEach(doc => {
         tmp.push(doc.data());
     }))
     return tmp;
 }
 
-export async function updateInventoryIndex(id, array){
-    await firestore().collection("masterdata").doc(id).update({locations: array});
+export async function updateInventory(id, array) {
+    await firestore().collection("masterdata").doc(id).update({ locations: array });
+}
 
+export async function addToLocations(id, array) {
+    await firestore().collection("masterdata").doc(id).update({ locations: array });
+}
+
+export async function addToUnitTypes(id, array) {
+    await firestore().collection("masterdata").doc(id).update({ unitTypes: array });
+}
+
+export async function updateUnitTypes(id, array) {
+    await firestore().collection("masterdata").doc(id).update({ unitTypes: array });
 }

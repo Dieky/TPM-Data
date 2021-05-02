@@ -20,10 +20,10 @@ const Masterdata = (props) => {
 
     const navigation = useNavigation();
     const [masterDataDocument, setMasterDataDocument] = useState();
-    
+
 
     const [locationName, setLocationName] = useState();
-    
+
     const handleLocationName = (txt) => {
         setLocationName(txt);
     }
@@ -44,13 +44,11 @@ const Masterdata = (props) => {
     }
 
     const editLocations = () => {
-        // console.log(inventory);
-        // let locations = masterDataDocument.locations;
-        navigation.navigate("UpdateLocationsScreen", { locations: masterDataDocument.locations, firebaseId: inventory.masterdata })
+        navigation.navigate("ShowLocationsScreen", { locations: masterDataDocument.locations, firebaseId: inventory.masterdata })
     }
 
     const editUnitType = () => {
-        console.log("Enheder");
+        navigation.navigate("ShowUnitTypeScreen", { unitTypes: masterDataDocument.unitTypes, firebaseId: inventory.masterdata });
     }
     const editCategory = () => {
         console.log("Kategorier");

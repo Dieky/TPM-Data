@@ -6,8 +6,10 @@ import ReviewDetails from "../appscreens/Details";
 import LoginScreen from "../appscreens/LoginScreen";
 import InventoryItems from "../appscreens/InventoryItems";
 import Masterdata from "../appscreens/MasterData";
-import UpdateLocationsScreen from "../appscreens/UpdateLocationsScreen";
+import ShowLocationsScreen from "../appscreens/ShowLocationsScreen";
 import UpdateSingleLocation from "../appscreens/UpdateSingleLocation";
+import UpdateSingleUnitType from "../appscreens/UpdateSingleUnitType";
+import ShowUnitTypeScreen from "../appscreens/ShowUnitTypeScreen";
 
 const Stack = createStackNavigator();
 
@@ -19,8 +21,10 @@ export default HomeNavigator = () => (
             <Stack.Screen name="Details" component={ReviewDetails} />
             <Stack.Screen name="InventoryItems" component={InventoryItems} />
             <Stack.Screen name="Masterdata" component={Masterdata} />
-            <Stack.Screen name="UpdateLocationsScreen" component={UpdateLocationsScreen} />
+            <Stack.Screen name="ShowLocationsScreen" component={ShowLocationsScreen} />
+            <Stack.Screen name="ShowUnitTypeScreen" component={ShowUnitTypeScreen} />
             <Stack.Screen name="UpdateSingleLocation" component={UpdateSingleLocation} />
+            <Stack.Screen name="UpdateSingleUnitType" component={UpdateSingleUnitType} />
         </Stack.Navigator>
     </NavigationContainer>
 );
