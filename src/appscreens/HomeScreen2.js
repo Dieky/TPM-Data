@@ -7,7 +7,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { useEffect, useState } from "react/cjs/react.development";
-import { addInventoryList, fetchInventoryLists } from '../dbfunctions/stamdata';
+import { addInventory, fetchInventory } from '../dbfunctions/stamdata';
 import styles from "../styles/GlobalStyling";
 import Inventory from "../components/Inventory";
 
@@ -22,7 +22,7 @@ const HomeScreen2 = ({ route, navigation }) => {
 
   useEffect(() => {
     async function fetchData() {
-      let res = await fetchInventoryLists(user)
+      let res = await fetchInventory(user)
       setInventoryList(res);
       setInventoryCreated(false);
     }
@@ -35,7 +35,7 @@ const HomeScreen2 = ({ route, navigation }) => {
 
   const testDb = async () => {
     Keyboard.dismiss();
-    await addInventoryList(user, inventoryName);
+    await addInventory(user, inventoryName);
     setInventoryCreated(true);
     setInventoryName("");
   }

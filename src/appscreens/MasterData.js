@@ -20,14 +20,7 @@ const Masterdata = (props) => {
 
     const navigation = useNavigation();
     const [masterDataDocument, setMasterDataDocument] = useState();
-
-
-    const [locationName, setLocationName] = useState();
-
-    const handleLocationName = (txt) => {
-        setLocationName(txt);
-    }
-
+ 
     useEffect(() => {
         async function fetchData() {
             let res = await fetchMasterData(inventory.masterdata);
@@ -36,13 +29,6 @@ const Masterdata = (props) => {
         fetchData(inventory.masterdata);
     }, [])
 
-    const test = (val) => {
-        console.log(masterDataDocument)
-        console.log(inventory.masterdata)
-
-        // console.log(val.children);
-    }
-
     const editLocations = () => {
         navigation.navigate("ShowLocationsScreen", { locations: masterDataDocument.locations, firebaseId: inventory.masterdata })
     }
@@ -50,25 +36,24 @@ const Masterdata = (props) => {
     const editUnitType = () => {
         navigation.navigate("ShowUnitTypeScreen", { unitTypes: masterDataDocument.unitTypes, firebaseId: inventory.masterdata });
     }
+
     const editCategory = () => {
-        console.log("Kategorier");
+        navigation.navigate("ShowCategoriesScreen", { category: masterDataDocument.category, firebaseId: inventory.masterdata });
     }
+
     const editItemlist = () => {
-        console.log("Varer");
+        navigation.navigate("ShowItemsScreen", { masterdata: masterDataDocument, firebaseId: inventory.masterdata });
     }
+
     return (
         <>
-            {/* <UpdateLocationsModal locationData={[1,2,3,4]} /> */}
-            {/* <Button title="test" onPress={test} /> */}
-            <Button title="Lokationer" onPress={editLocations} />
-            <Button title="Enheder" onPress={editUnitType} />
-            <Button title="Kategorier" onPress={editCategory} />
-            <Button title="Varer" onPress={editItemlist} />
-
-
+            <Button title="Locations" onPress={editLocations} />
+            <Button title="Unit Types" onPress={editUnitType} />
+            <Button title="Categories" onPress={editCategory} />
+            <Button title="Manage items" onPress={editItemlist} />
         </>
     )
 }
 
 
-export default Masterdata
+export default Masterdata;

@@ -14,15 +14,18 @@ const UpdateSingleLocation = (props) => {
     const { locations, index, firebaseId } = props.route.params;
 
     const navigation = useNavigation();
-    const [newValue, setNewValue] = useState(locations[index]);
+    const [newValue, setNewValue] = useState(locations[index].name);
 
     const valueHandler = (txt) => {
         setNewValue(txt);
     }
 
     const Update = async () => {
+        let data = {
+            name: newValue
+        }
         let newArray = locations;
-        newArray[index] = newValue;
+        newArray[index] = data;
         await addToLocations(firebaseId, newArray);
         navigation.navigate("ShowLocationsScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
         // navigation.navigate("UpdateLocationsScreen", ); // Dette Tvinger IKKE UpdateLocationsScreen til at opdatere

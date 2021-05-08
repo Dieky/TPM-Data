@@ -25,8 +25,11 @@ const ShowUnitTypeScreen = (props) => {
     }
 
     const addHandler = async () => {
+        let data = {
+            name: newValue
+        }
         let tmpArray = unitTypes;
-        tmpArray.push(newValue);
+        tmpArray.push(data);
         await addToUnitTypes(firebaseId, tmpArray);
     }
 
@@ -36,7 +39,7 @@ const ShowUnitTypeScreen = (props) => {
             {unitTypes.map((data, index) => {
                 return (
                     <Pressable key={index} onPress={() => updateSingle(data, index)}>
-                        <Text>{data}</Text>
+                        <Text>{data.name}</Text>
                     </Pressable>
 
                 )

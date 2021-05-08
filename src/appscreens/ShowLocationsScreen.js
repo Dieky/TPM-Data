@@ -22,8 +22,11 @@ const ShowLocationsScreen = (props) => {
     }
 
     const addHandler = async () => {
+        let data = {
+            name: newValue
+        }
         let tmpArray = locations;
-        tmpArray.push(newValue);
+        tmpArray.push(data);
         await addToLocations(firebaseId, tmpArray);
     }
 
@@ -34,7 +37,7 @@ const ShowLocationsScreen = (props) => {
             {locations.map((data, index) => {
                 return (
                     <Pressable key={index} onPress={() => updateSingle(data, index)}>
-                        <Text>{data}</Text>
+                        <Text>{data.name}</Text>
                     </Pressable>
 
                 )
