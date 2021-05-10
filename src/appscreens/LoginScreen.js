@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TextInput, Text, Button } from 'react-native';
+import { TextInput, Text, Button, View } from 'react-native';
 import styles from "../styles/GlobalStyling";
 import auth from '@react-native-firebase/auth';
 
@@ -62,23 +62,25 @@ function LoginScreen({ route, navigation }) {
 
     return (
         <>
-            <Text style={styles.textStyling}>Login</Text>
 
-            <TextInput
-                style={styles.loginInputfield}
-                placeholder="patrick@gmail.com"
-                onChangeText={onChangeMail}
-                value={mail}
-            />
-            <TextInput
-                style={styles.loginInputfield}
-                secureTextEntry={true}
-                placeholder="123456"
-                onChangeText={onChangePassword}
-                value={password}
-            />
-            <Button title="Login" onPress={LoginUser} />
-            <Button title="Create" onPress={CreateUser} />
+            <View style={{padding: 10}}>
+
+                <TextInput
+                    style={styles.loginInputfield}
+                    placeholder="patrick@gmail.com"
+                    onChangeText={onChangeMail}
+                    value={mail}
+                />
+                <TextInput
+                    style={styles.loginInputfield}
+                    secureTextEntry={true}
+                    placeholder="123456"
+                    onChangeText={onChangePassword}
+                    value={password}
+                />
+                <Button title="Login" onPress={LoginUser} />
+                <Button title="Create" onPress={CreateUser} />
+            </View>
         </>
     );
 }

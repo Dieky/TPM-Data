@@ -8,15 +8,17 @@ import {
     Button,
     TouchableNativeFeedback,
 } from 'react-native';
-import { fetchMasterData } from "../dbfunctions/stamdata";
 import { Picker } from '@react-native-picker/picker';
 import { TextInput } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-date-picker'
 import { addToInventoryList } from '../dbfunctions/stamdata';
+import { useNavigation } from '@react-navigation/native';
 
 const AddItemScreen = (props) => {
 
     const { inventory, masterdata } = props.route.params;
+
+    const navigation = useNavigation();
 
     const [selectedItem, setSelectedItem] = useState(0);
     const [selectedCategory, setSelectedCategory] = useState(0);
@@ -62,7 +64,7 @@ const AddItemScreen = (props) => {
     }
 
 
-    const test = () => {
+    const addItem = () => {
         // let expire_date = new Date();
 
         // // henter aktuel dato  .split("T")[0] formaterer så vi splitter ved T og tager første del af string foran T'et
@@ -87,7 +89,7 @@ const AddItemScreen = (props) => {
         }
         let tmpArray = inventory.inventorylist;
         tmpArray.push(data);
-        addToInventoryList(inventory.documentId,tmpArray);
+        addToInventoryList(inventory.documentId, tmpArray);
         // console.log(inventory.documentId);
     }
 
@@ -167,7 +169,7 @@ const AddItemScreen = (props) => {
             />
 
 
-            <Button title="test" onPress={test} />
+            <Button title="Add" onPress={addItem} />
         </>
     )
 }

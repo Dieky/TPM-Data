@@ -1,98 +1,76 @@
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    scrollView: {
-        backgroundColor: 'lightblue',
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-    },
-    horizontalContainer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        paddingHorizontal: 25,
-        paddingBottom: 10,
-        paddingTop: 10,
-    },
-    inputfield: {
-        borderColor: 'black',
-        borderBottomWidth: 1,
-        fontWeight: 'bold',
-        width: 200,
-    },
-    picker: {
-        // flex: 1,
-        height: 50,
-        width: 200,
-        alignSelf: 'center',
-    },
-    textStyling: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        alignSelf: "center",
-    },
-    loginInputfield: {
-        borderColor: 'black',
-        borderBottomWidth: 1,
-        fontWeight: 'bold',
-        width: 200,
-        alignSelf: 'center',
-    },
-    inventoryView: {
-        backgroundColor: 'yellow',
-        borderColor: 'black',
-        borderWidth: 1,
-        fontSize: 20,
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        paddingBottom: 10,
-        paddingTop: 10,
-    },
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22
-      },
-      modalView: {
-        margin: 20,
-        backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 4,
-        elevation: 5
-      },
-      button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2
-      },
-      buttonOpen: {
-        backgroundColor: "#F194FF",
-      },
-      buttonClose: {
-        backgroundColor: "#2196F3",
-      },
-      textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
-      },
-      modalText: {
-        marginBottom: 15,
-        textAlign: "center"
-      }
-    
+  textStyling: {
+    flex: 2,
+    fontSize: 15,
+    fontWeight: 'bold',
+    // borderColor: "black",
+    // borderWidth: 2,
+  },
+  textStyling2: {
+    flex: 1,
+    fontSize: 15,
+    fontWeight: 'bold',
+    // borderColor: "black",
+    // borderWidth: 2,
+  },
+  textStyling3: {
+    flex: 1,
+    fontSize: 15,
+    // fontWeight: 'bold',
+    // borderColor: "black",
+    // borderWidth: 2,
+  },
+  textStyling4: {
+    justifyContent: "flex-start",
+    flex: 1,
+    fontSize: 15,
+    // fontWeight: 'bold',
+    // borderColor: "black",
+    // borderWidth: 2,
+  },
+  loginInputfield: {
+    borderColor: 'black',
+    borderBottomWidth: 1,
+    fontWeight: 'bold',
+    width: 200,
+    alignSelf: 'center',
+  },
+  inventoryContainer: {
+    borderColor: "black",
+    borderWidth: 1,
+    paddingBottom: 5,
+    paddingTop: 5,
+  },
+  inventoryLine1: {
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+  inventoryLine2: {
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+  },
+  inventoryLine3: {
+    justifyContent: "space-between",
+    flexDirection: "row",
+    width: 250,
+  },
+  updateInventoryContainer: {
+    alignItems: "center",
+    flexDirection: "column",
+    borderColor: "black",
+    borderWidth: 1,
+  },
+  updateInventoryText: {
+    fontWeight: "bold",
+  },
+  textRow: {
+    borderColor: "blue",
+    borderWidth: 2,
+    alignItems: "flex-end",
+  },
+ 
 
 
 });

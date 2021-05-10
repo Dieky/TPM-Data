@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../appscreens/HomeScreen2";
+import Home from "../appscreens/HomeScreen";
 import LoginScreen from "../appscreens/LoginScreen";
 import InventoryItems from "../appscreens/InventoryItems";
 import Masterdata from "../appscreens/MasterData";
@@ -14,6 +14,7 @@ import ShowCategoriesScreen from "../appscreens/ShowCategoriesScreen";
 import ShowItemsScreen from "../appscreens/ShowItemsScreen";
 import UpdateSingleItem from "../appscreens/UpdateSingleItem";
 import AddItemScreen from "../appscreens/AddItemScreen";
+import UpdateSingleInventoryItem from "../appscreens/UpdateSingleInventoryItem";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,7 @@ export default HomeNavigator = () => (
             <Stack.Screen name="ShowItemsScreen" component={ShowItemsScreen} />
             <Stack.Screen name="UpdateSingleItem" component={UpdateSingleItem} />
             <Stack.Screen name="AddItemScreen" component={AddItemScreen} />
+            <Stack.Screen name="UpdateSingleInventoryItem" component={UpdateSingleInventoryItem} />
         </Stack.Navigator>
     </NavigationContainer>
 );
