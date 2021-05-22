@@ -9,9 +9,11 @@ import {
     TouchableNativeFeedback,
     Button,
     Pressable,
+    Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { addToCategory } from "../dbfunctions/stamdata";
+import { validateExpiration } from "../utils/InputValidation";
 
 
 const UpdateSingleCategory = (props) => {
@@ -28,11 +30,16 @@ const UpdateSingleCategory = (props) => {
         let data = {
             main_category: mainCategory,
             second_category: secondaryCategory,
-            expiration: defaultExpiration
+            expiration: validateExpiration(defaultExpiration) // using a regex to make sure the start value is numeric, and extracts the correct value
         }
-        tmpArray[index] = data;
-        await addToCategory(firebaseId, tmpArray);
-        navigation.navigate("ShowCategoriesScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        // checking if the input is correct, if it is not correct an alert is shown to the user. Otherwise the category is updated
+        if (!(data.main_category === undefined || data.main_category === "") && !(data.second_category === undefined || data.second_category === "") && !(data.expiration === null || data.expiration === "")) {
+            tmpArray[index] = data;
+            await addToCategory(firebaseId, tmpArray);
+            navigation.navigate("ShowCategoriesScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        } else {
+            Alert.alert("Missing input please fill out all fields. Expiration MUST be a numeric value");
+        }
     }
 
     return (

@@ -13,11 +13,13 @@ import {
     Keyboard,
     TextInput,
     Modal,
+    Alert,
 } from 'react-native';
 import styles from "../styles/GlobalStyling";
 import { Picker } from '@react-native-picker/picker';
 import { addToInventoryList } from "../dbfunctions/stamdata";
 import { useNavigation } from '@react-navigation/native';
+import { validateAmount } from "../utils/InputValidation";
 
 const UpdateSingleInventoryItem = (props) => {
 
@@ -106,15 +108,21 @@ const UpdateSingleInventoryItem = (props) => {
         let tmpArray = inventory.inventorylist;
         let newItem = {
             locationId: location,
-            amount: amount,
+            amount: validateAmount(amount),
             categoryId: item_category_id,
             created_date: item_created_date,
             expiration_date: item_expiration_date,
             itemId: itemId,
             unitTypeId: unitTypeId,
         }
-        tmpArray[index] = newItem;
-        addToInventoryList(inventory.documentId, tmpArray);
+
+        if (!(newItem.amount === null || newItem.amount === "")) {
+            tmpArray[index] = newItem;
+            addToInventoryList(inventory.documentId, tmpArray);
+            navigation.navigate("InventoryItems", { makeUpdate: true });
+        } else {
+            Alert.alert("Please use a numeric amount");
+        }
 
     }
 
@@ -122,7 +130,7 @@ const UpdateSingleInventoryItem = (props) => {
         let tmpArray = inventory.inventorylist;
         tmpArray.splice(index, 1)
         addToInventoryList(inventory.documentId, tmpArray);
-        navigation.navigate("InventoryItems"), { makeUpdate: true };
+        navigation.navigate("InventoryItems", { makeUpdate: true });
     }
 
     // Værdier der skal kunne ændres fra inventory og masterdata og returnerer resultatet i JSX

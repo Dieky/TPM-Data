@@ -3,6 +3,7 @@ import {
     View,
     Button,
     TextInput,
+    Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from "react/cjs/react.development";
@@ -24,11 +25,15 @@ const UpdateSingleLocation = (props) => {
         let data = {
             name: newValue
         }
-        let newArray = locations;
-        newArray[index] = data;
-        await addToLocations(firebaseId, newArray);
-        navigation.navigate("ShowLocationsScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
-        // navigation.navigate("UpdateLocationsScreen", ); // Dette Tvinger IKKE UpdateLocationsScreen til at opdatere
+        // checking if the input is correct, if it is not correct an alert is shown to the user. Otherwise the location is updated
+        if (!(data.name === undefined || data.name === "")) {
+            let newArray = locations;
+            newArray[index] = data;
+            await addToLocations(firebaseId, newArray);
+            navigation.navigate("ShowLocationsScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        } else {
+            Alert.alert("Please give a name to your location");
+        }
     }
 
     return (

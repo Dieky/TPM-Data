@@ -7,12 +7,14 @@ import {
     Text,
     Button,
     TouchableNativeFeedback,
+    Alert,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { TextInput } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-date-picker'
 import { addToInventoryList } from '../dbfunctions/stamdata';
 import { useNavigation } from '@react-navigation/native';
+import { validateAmount } from "../utils/InputValidation";
 
 const AddItemScreen = (props) => {
 
@@ -26,6 +28,16 @@ const AddItemScreen = (props) => {
     const [unitAmount, setUnitAmount] = useState();
     const [location, setLocation] = useState();
     const [expirationDateObject, setExpirationDateObject] = useState(new Date())
+
+    // setting the expiration date on the calender on start up. Takes the first item in the dropdown and uses the expiration to calculate the expire date.
+    // also sets the initial location in the same manner as expiration date
+    useEffect(() => {
+        let expire_date = new Date();
+        let item_expiration_months = parseInt(masterdata.itemlist[0].expiration);
+        expire_date.setMonth(expire_date.getMonth() + item_expiration_months);
+        setExpirationDateObject(expire_date)
+        setLocation(0);
+    }, [])
 
     // Der opstår noget race conditioning hvis man bruger en hooks værdi (fx selectedItem)
     // det vil sige at man får ikke den aktuelle værdi, men istedet den tidligere værdi
@@ -83,14 +95,20 @@ const AddItemScreen = (props) => {
             categoryId: selectedCategory,
             unitTypeId: unitType,
             locationId: location,
-            amount: unitAmount,
+            amount: validateAmount(unitAmount),
             created_date: created_date,
             expiration_date: expiration_date,
         }
-        let tmpArray = inventory.inventorylist;
-        tmpArray.push(data);
-        addToInventoryList(inventory.documentId, tmpArray);
-        // console.log(inventory.documentId);
+
+        if (!(data.amount === null || data.amount === "")) {
+            let tmpArray = inventory.inventorylist;
+            tmpArray.push(data);
+            addToInventoryList(inventory.documentId, tmpArray);
+            navigation.navigate("InventoryItems", { changesMade: true })
+        } else {
+            Alert.alert("Please enter an amount. MUST be numeric value");
+        }
+
     }
 
     const textInputHandler = (txt) => {

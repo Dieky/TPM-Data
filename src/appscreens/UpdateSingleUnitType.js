@@ -4,6 +4,7 @@ import {
     Button,
     TextInput,
     Text,
+    Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from "react/cjs/react.development";
@@ -23,10 +24,15 @@ const UpdateSingleUnitType = (props) => {
         let data = {
             name: newValue
         }
-        let newArray = unitTypes;
-        newArray[index] = data;
-        await addToUnitTypes(firebaseId, newArray);
-        navigation.navigate("ShowUnitTypeScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        // checking if the input is correct, if it is not correct an alert is shown to the user. Otherwise the unit type is updated
+        if (!(data.name === undefined || data.name === "")) {
+            let newArray = unitTypes;
+            newArray[index] = data;
+            await addToUnitTypes(firebaseId, newArray);
+            navigation.navigate("ShowUnitTypeScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        } else{
+            Alert.alert("Please give a name to your unit type");
+        }
     }
 
 

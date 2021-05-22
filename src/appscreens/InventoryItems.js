@@ -28,7 +28,7 @@ const InventoryItems = (props) => {
         fetchData();
 
 
-    }, [])
+    }, [inventory.itemlist])
 
     const updateMasterData = () => {
         navigation.navigate("Masterdata", { inventory });

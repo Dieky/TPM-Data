@@ -6,11 +6,13 @@ import {
     Text,
     Pressable,
     Keyboard,
+    Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from "react/cjs/react.development";
 import { Picker } from '@react-native-picker/picker';
 import { addToItems } from "../dbfunctions/stamdata"
+import { validateExpiration } from "../utils/InputValidation";
 
 const UpdateSingleItem = (props) => {
 
@@ -38,14 +40,18 @@ const UpdateSingleItem = (props) => {
             name: itemName,
             category: categoryIndex,
             unitType: unitType,
-            expiration: expiration
+            expiration: validateExpiration(expiration) // using a regex to make sure the start value is numeric, and extracts the correct value
         }
-        let tmpArray = masterdata.itemlist;
-        // console.log(data);
-        tmpArray[index] = data;
-        await addToItems(firebaseId, tmpArray);
-        Keyboard.dismiss();
-        navigation.navigate("ShowItemsScreen", { changesMade: true });
+        // checking if the input is correct, if it is not correct an alert is shown to the user. Otherwise the item is updated
+        if (!(data.name === undefined || data.name === "") && !(data.expiration === null || data.expiration === "")) {
+            let tmpArray = masterdata.itemlist;
+            tmpArray[index] = data;
+            await addToItems(firebaseId, tmpArray);
+            Keyboard.dismiss();
+            navigation.navigate("ShowItemsScreen", { changesMade: true });
+        } else {
+            Alert.alert("Missing input please fill out all fields. Expiration MUST be a numeric value");
+        }
     }
 
     // value og index er det samme, da jeg på pick.item sætter value={index}

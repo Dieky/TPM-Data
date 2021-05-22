@@ -6,11 +6,13 @@ import {
     Text,
     Pressable,
     Keyboard,
+    Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from "react/cjs/react.development";
 import { Picker } from '@react-native-picker/picker';
 import { addToItems } from "../dbfunctions/stamdata"
+import { validateExpiration } from "../utils/InputValidation";
 
 
 const ShowItemsScreen = (props) => {
@@ -30,12 +32,19 @@ const ShowItemsScreen = (props) => {
             name: itemName,
             category: categoryIndex,
             unitType: unitType,
-            expiration: expiration
+            expiration: validateExpiration(expiration) // using a regex to make sure the start value is numeric, and extracts the correct value
         }
-        let tmpArray = masterdata.itemlist;
-        tmpArray.push(data);
-        Keyboard.dismiss();
-        await addToItems(firebaseId, tmpArray);
+
+        // checking if the input is correct, if it is not correct an alert is shown to the user. Otherwise the item is added
+        if (!(data.name === undefined || data.name === "") && !(data.expiration === null || data.expiration === "")) {
+            let tmpArray = masterdata.itemlist;
+            tmpArray.push(data);
+            Keyboard.dismiss();
+            await addToItems(firebaseId, tmpArray);
+            navigation.navigate("ShowItemsScreen", { changesMade: true }); // Tvinger UpdateLocationsScreen til at opdatere når et parameter gives med, ingen ide om hvorfor!
+        } else {
+            Alert.alert("Make sure to add name your item and a numeric value for the expiration");
+        }
     }
 
     // value og index er det samme, da jeg på pick.item sætter value={index}

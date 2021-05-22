@@ -5,6 +5,7 @@ import {
   Button,
   TextInput,
   Keyboard,
+  Alert,
 } from 'react-native';
 import { useEffect, useState } from "react/cjs/react.development";
 import { addInventory, fetchInventory } from '../dbfunctions/stamdata';
@@ -35,9 +36,13 @@ const HomeScreen = ({ route, navigation }) => {
 
   const testDb = async () => {
     Keyboard.dismiss();
-    await addInventory(user, inventoryName);
-    setInventoryCreated(true);
-    setInventoryName("");
+    if(!(inventoryName === undefined || inventoryName === "")){
+      await addInventory(user, inventoryName);
+      setInventoryCreated(true);
+      setInventoryName("");
+    }else{
+      Alert.alert("Please enter a name for your inventory");
+    }
   }
 
   const printInventory = () => {
