@@ -187,7 +187,7 @@ const AddItemScreen = (props) => {
             />
 
 
-            <Button title="Add" onPress={addItem} />
+            <Button title="Add item" onPress={addItem} />
         </>
     )
 }
