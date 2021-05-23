@@ -107,7 +107,7 @@ const UpdateSingleItem = (props) => {
                 })}
             </Picker>
 
-            <Button title="tester" onPress={updateItem} />
+            <Button title="Update" onPress={updateItem} />
         </>
     )
 }

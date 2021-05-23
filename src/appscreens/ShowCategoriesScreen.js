@@ -81,7 +81,7 @@ const ShowCategoriesScreen = (props) => {
 
             />
 
-            <Button title="Add" onPress={addHandler} />
+            <Button title="Add category" onPress={addHandler} />
         </>
     )
 

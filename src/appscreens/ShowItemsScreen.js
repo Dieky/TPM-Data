@@ -113,7 +113,7 @@ const ShowItemsScreen = (props) => {
                 })}
             </Picker>
 
-            <Button title="add" onPress={addItem} />
+            <Button title="Add item" onPress={addItem} />
         </>
     )
 
