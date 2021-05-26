@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from "react/cjs/react.development";
-import { addToUnitTypes } from "../dbfunctions/stamdata";
+import { addToUnitTypes } from "../dbfunctions/DBActions";
 
 const UpdateSingleUnitType = (props) => {
 

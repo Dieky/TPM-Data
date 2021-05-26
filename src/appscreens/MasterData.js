@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import styles from "../styles/GlobalStyling";
 import { useNavigation } from '@react-navigation/native';
-import { fetchMasterData } from '../dbfunctions/stamdata';
+import { fetchMasterData } from '../dbfunctions/DBActions';
 import UpdateLocationsModal from "../components/UpdateLocationsModal";
 
 const Masterdata = (props) => {

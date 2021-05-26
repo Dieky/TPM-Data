@@ -8,7 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import { useEffect, useState } from "react/cjs/react.development";
-import { addInventory, fetchInventory } from '../dbfunctions/stamdata';
+import { addInventory, fetchInventory } from '../dbfunctions/DBActions';
 import styles from "../styles/GlobalStyling";
 import Inventory from "../components/Inventory";
 

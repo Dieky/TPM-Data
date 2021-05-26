@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 import styles from "../styles/GlobalStyling";
 import { Picker } from '@react-native-picker/picker';
-import { addToInventoryList } from "../dbfunctions/stamdata";
+import { addToInventoryList } from "../dbfunctions/DBActions";
 import { useNavigation } from '@react-navigation/native';
 import { validateAmount } from "../utils/InputValidation";
 

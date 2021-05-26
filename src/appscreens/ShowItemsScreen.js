@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from "react/cjs/react.development";
 import { Picker } from '@react-native-picker/picker';
-import { addToItems } from "../dbfunctions/stamdata"
+import { addToItems } from "../dbfunctions/DBActions"
 import { validateExpiration } from "../utils/InputValidation";
 
 

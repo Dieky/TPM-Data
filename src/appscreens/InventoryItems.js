@@ -11,7 +11,7 @@ import {
     FlatList,
 } from 'react-native';
 import styles from "../styles/GlobalStyling";
-import { fetchMasterData } from "../dbfunctions/stamdata";
+import { fetchMasterData } from "../dbfunctions/DBActions";
 import { useNavigation } from '@react-navigation/native';
 
 const InventoryItems = (props) => {

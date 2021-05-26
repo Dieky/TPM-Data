@@ -12,7 +12,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 import { TextInput } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-date-picker'
-import { addToInventoryList } from '../dbfunctions/stamdata';
+import { addToInventoryList } from '../dbfunctions/DBActions';
 import { useNavigation } from '@react-navigation/native';
 import { validateAmount } from "../utils/InputValidation";
 

@@ -12,7 +12,7 @@ import {
     Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { addToUnitTypes } from "../dbfunctions/stamdata";
+import { addToUnitTypes } from "../dbfunctions/DBActions";
 
 const ShowUnitTypeScreen = (props) => {
 

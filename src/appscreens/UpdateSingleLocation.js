@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from "react/cjs/react.development";
-import { addToLocations } from "../dbfunctions/stamdata";
+import { addToLocations } from "../dbfunctions/DBActions";
 
 const UpdateSingleLocation = (props) => {
 

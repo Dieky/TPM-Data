@@ -12,7 +12,7 @@ import {
     Alert,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { addToCategory } from "../dbfunctions/stamdata";
+import { addToCategory } from "../dbfunctions/DBActions";
 import { validateExpiration } from "../utils/InputValidation";
 
 

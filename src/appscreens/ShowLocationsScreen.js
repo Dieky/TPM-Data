@@ -9,7 +9,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from "react-native-gesture-handler";
 import { useState } from "react/cjs/react.development";
-import { addToLocations } from "../dbfunctions/stamdata";
+import { addToLocations } from "../dbfunctions/DBActions";
 
 const ShowLocationsScreen = (props) => {
     const navigation = useNavigation();

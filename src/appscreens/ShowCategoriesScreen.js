@@ -12,7 +12,7 @@ import {
     Modal,
     Alert,
 } from 'react-native';
-import { addToCategory } from "../dbfunctions/stamdata";
+import { addToCategory } from "../dbfunctions/DBActions";
 import { useNavigation } from '@react-navigation/native';
 import { validateExpiration } from "../utils/InputValidation";
 
