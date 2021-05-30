@@ -16,6 +16,7 @@ import Inventory from "../components/Inventory";
 
 const HomeScreen = ({ route, navigation }) => {
 
+  const { user } = route.params;
   const [inventoryName, setInventoryName] = useState();
   const [inventoryCreated, setInventoryCreated] = useState(false);
   const [inventoryList, setInventoryList] = useState([]);
@@ -29,7 +30,7 @@ const HomeScreen = ({ route, navigation }) => {
     }
     fetchData();
   }, [inventoryCreated]);
-
+  
   const inventoryNameHandler = (txt) => {
     setInventoryName(txt);
   }
@@ -50,7 +51,6 @@ const HomeScreen = ({ route, navigation }) => {
   }
 
 
-  const { user } = route.params;
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Hello {user.email}</Text>
@@ -63,7 +63,7 @@ const HomeScreen = ({ route, navigation }) => {
       />
 
       {inventoryList.map((data, index) => {
-        return <Inventory inventory={data} key={index} navigation={navigation}  />
+        return <Inventory inventory={data} key={index} navigation={navigation} user={user}  />
       })}
       <Button title="Create new inventory" onPress={testDb} />
     </View>

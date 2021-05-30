@@ -10,14 +10,12 @@ import {
 import styles from "../styles/GlobalStyling";
 
 const Inventory = (props) => {
-    const { inventory, navigation } = props;
+    const { inventory, navigation, user } = props;
 
     const showInventory = () => {
-        navigation.navigate("InventoryItems", { inventory });
+        navigation.navigate("InventoryItems", { inventory: inventory, user: user });
     }
 
-    useEffect(() => {
-    }, [])
 
     return (
         <>

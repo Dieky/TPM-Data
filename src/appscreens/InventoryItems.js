@@ -15,7 +15,7 @@ import { fetchMasterData } from "../dbfunctions/DBActions";
 import { useNavigation } from '@react-navigation/native';
 
 const InventoryItems = (props) => {
-    const { inventory } = props.route.params;
+    const { inventory, user } = props.route.params;
     const navigation = useNavigation();
 
     const [masterdata, setMasterdata] = useState();
@@ -31,7 +31,7 @@ const InventoryItems = (props) => {
     }, [inventory.itemlist])
 
     const updateMasterData = () => {
-        navigation.navigate("Masterdata", { inventory });
+        navigation.navigate("Masterdata", { inventory: inventory, user: user });
     }
 
     const AddInventory = () => {

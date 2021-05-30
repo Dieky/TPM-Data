@@ -63,5 +63,10 @@ export async function addToItems(id, array) {
 
 export async function addToInventoryList(id, array) {
     await firestore().collection("inventory").doc(id).update({ inventorylist: array });
+    
+}
+
+export async function addUser(id, array){
+    await firestore().collection("inventory").doc(id).update({ usersAllowed: array });
 
 }

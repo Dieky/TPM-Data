@@ -15,6 +15,8 @@ import ShowItemsScreen from "../appscreens/ShowItemsScreen";
 import UpdateSingleItem from "../appscreens/UpdateSingleItem";
 import AddItemScreen from "../appscreens/AddItemScreen";
 import UpdateSingleInventoryItem from "../appscreens/UpdateSingleInventoryItem";
+import ShowUsersScreen from "../appscreens/ShowUsersScreen";
+import UpdateSingleUser from "../appscreens/UpdateSingleUser";
 
 const Stack = createStackNavigator();
 
@@ -35,6 +37,8 @@ export default HomeNavigator = () => (
             <Stack.Screen name="UpdateSingleItem" component={UpdateSingleItem} />
             <Stack.Screen name="AddItemScreen" component={AddItemScreen} />
             <Stack.Screen name="UpdateSingleInventoryItem" component={UpdateSingleInventoryItem} />
+            <Stack.Screen name="ShowUsersScreen" component={ShowUsersScreen} />
+            <Stack.Screen name="UpdateSingleUser" component={UpdateSingleUser} />
         </Stack.Navigator>
     </NavigationContainer>
 );
