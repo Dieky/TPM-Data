@@ -35,7 +35,7 @@ const HomeScreen = ({ route, navigation }) => {
     setInventoryName(txt);
   }
 
-  const testDb = async () => {
+  const createInventory = async () => {
     Keyboard.dismiss();
     if(!(inventoryName === undefined || inventoryName === "")){
       await addInventory(user, inventoryName);
@@ -65,7 +65,7 @@ const HomeScreen = ({ route, navigation }) => {
       {inventoryList.map((data, index) => {
         return <Inventory inventory={data} key={index} navigation={navigation} user={user}  />
       })}
-      <Button title="Create new inventory" onPress={testDb} />
+      <Button title="Create new inventory" onPress={createInventory} />
     </View>
   );
 }

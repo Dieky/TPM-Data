@@ -19,8 +19,12 @@ export function validateAmount(text) {
     }
 }
 
+// use https://regexr.com/ and paste the regex string to get a better explanation of what it does
+// in short it checks that it doesnt contain any weird symbols, before the @ you can repeat the process as much as you want example - "patrick.test@gmail.com" 
+// after @ another pattern is used. These has to be either numeric or in the a-z range. After the . sign only a-z is allowed and must be length 2 or more
 export function ValidateEmail(mail) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(([a-zA-Z\-0-9]+\.)+([a-zA-Z]{2,}))$/;
     let result = re.test(mail);
     return result;
 }
